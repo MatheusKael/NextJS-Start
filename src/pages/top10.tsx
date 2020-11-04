@@ -11,6 +11,12 @@ interface Top10Props {
 }
 
 export default function Top10({ products }: Top10Props) {
+  async function Sum() {
+    const math = await import("../libs/math");
+
+    alert(math.default.sum(3, 3));
+  }
+
   return (
     <div>
       <Title>Top 10</Title>
@@ -22,6 +28,8 @@ export default function Top10({ products }: Top10Props) {
           );
         })}
       </ul>
+
+      <button onClick={Sum}>Soma</button>
     </div>
   );
 }
