@@ -10,7 +10,7 @@ interface HomeProps {
   recommendedProducts: IProduct[];
 }
 
-export default function Home() {
+export default function Home({ recommendedProducts }: HomeProps) {
   return (
     <div>
       <section>
@@ -27,7 +27,9 @@ export default function Home() {
 }
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  const response = await fetch("http://localhost:3333/recommended");
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/recommended`
+  );
 
   const recommendedProducts = await response.json();
 
